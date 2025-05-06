@@ -25,9 +25,9 @@ If collateral < liquidation threshold, liquidators can repay the borrower's debt
 
 
 
-Program:
+# Program:
 ```
-//SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract DeFiLending {
@@ -53,16 +53,11 @@ contract DeFiLending {
     }
 
     function borrow(uint256 amount) public payable {
-        require(msg.value >= (amount * liquidationThreshold) / 100, "Nota enough collateral");
+        require(msg.value >= (amount * liquidationThreshold) / 100, "Not enough collateral");
         borrowed[msg.sender] += amount;
         collateral[msg.sender] += msg.value;
         payable(msg.sender).transfer(amount);
         emit Borrowed(msg.sender, amount, msg.value);
-    }
-    function reduceCollateral(address user, uint256 amount) public {
-    require(msg.sender == owner, "Only owner can reduce");
-    require(collateral[user] >= amount, "Not enough collateral to reduce");
-    collateral[user] -= amount;
     }
 
     function liquidate(address borrower) public {
@@ -79,24 +74,33 @@ contract DeFiLending {
 
 ```
 # Expected Output:
-Users can deposit ETH and earn interest.
+1.Users can deposit ETH and earn interest.
 
 
-Users can borrow ETH by providing collateral.
+2.Users can borrow ETH by providing collateral.
 
 
-If collateral < 150% of borrowed amount, liquidators can seize the collateral.
+3.If collateral < 150% of borrowed amount, liquidators can seize the collateral.
 
 
 
 # High-Level Overview:
-Teaches key DeFi concepts: lending, borrowing, collateral, liquidation.
+1.Teaches key DeFi concepts: lending, borrowing, collateral, liquidation.
 
 
-Introduces risk management: overcollateralization and liquidation.
+2.Introduces risk management: overcollateralization and liquidation.
 
 
-Directly related to DeFi protocols like Aave and Compound.
+3.Directly related to DeFi protocols like Aave and Compound.
 
+# OUTPUT:
+### Deploy:
+![alt text](<Screenshot 2025-04-28 140112.png>)
+### Deposit:
+![alt text](<Screenshot 2025-04-28 142127.png>)
+### Borrow:
+![alt text](<Screenshot 2025-04-28 142148.png>)
+### Collateral:
+![alt text](<Screenshot 2025-04-28 142217.png>)
 # RESULT : 
-
+Thus, a DeFi Lending and Borrowing Protocol has been successfully built and implenmented on Remix - Ethereum IDE
