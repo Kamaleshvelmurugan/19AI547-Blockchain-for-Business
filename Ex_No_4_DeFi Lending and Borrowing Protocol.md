@@ -95,12 +95,12 @@ contract DeFiLending {
 
 # OUTPUT:
 ### Deploy:
-(<Screenshot 2025-04-28 140112.png>)
+Screenshot 2025-04-28 140112.png>
 ### Deposit:
-(<Screenshot 2025-04-28 142127.png>)
+Screenshot 2025-04-28 142127.png>
 ### Borrow:
 (<Screenshot 2025-04-28 142148.png>)
 ### Collateral:
-(<Screenshot 2025-04-28 142217.png>)
+Screenshot 2025-04-28 142217.png
 # RESULT : 
 Thus, a DeFi Lending and Borrowing Protocol has been successfully built and implenmented on Remix - Ethereum IDE
