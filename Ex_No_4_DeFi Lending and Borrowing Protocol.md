@@ -25,9 +25,11 @@ If collateral < liquidation threshold, liquidators can repay the borrower's debt
 
 
 
-# Program:
+Program:
 ```
-// SPDX-License-Identifier: MIT
+NAME : PRAGAHARSHITHA NC
+REF NO : 21222110033
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
 contract DeFiLending {
@@ -53,11 +55,16 @@ contract DeFiLending {
     }
 
     function borrow(uint256 amount) public payable {
-        require(msg.value >= (amount * liquidationThreshold) / 100, "Not enough collateral");
+        require(msg.value >= (amount * liquidationThreshold) / 100, "Nota enough collateral");
         borrowed[msg.sender] += amount;
         collateral[msg.sender] += msg.value;
         payable(msg.sender).transfer(amount);
         emit Borrowed(msg.sender, amount, msg.value);
+    }
+    function reduceCollateral(address user, uint256 amount) public {
+    require(msg.sender == owner, "Only owner can reduce");
+    require(collateral[user] >= amount, "Not enough collateral to reduce");
+    collateral[user] -= amount;
     }
 
     function liquidate(address borrower) public {
@@ -74,33 +81,35 @@ contract DeFiLending {
 
 ```
 # Expected Output:
-1.Users can deposit ETH and earn interest.
+Users can deposit ETH and earn interest.
 
 
-2.Users can borrow ETH by providing collateral.
+Users can borrow ETH by providing collateral.
 
 
-3.If collateral < 150% of borrowed amount, liquidators can seize the collateral.
+If collateral < 150% of borrowed amount, liquidators can seize the collateral.
+
+![image](https://github.com/user-attachments/assets/f0979e86-8161-4580-9a2b-0129800bf24c)
+
+![image](https://github.com/user-attachments/assets/d7c5ce1f-7dcb-40af-9272-a01b21dc646e)
+
+![image](https://github.com/user-attachments/assets/4dc311d0-4e98-45e5-b8e6-1bd23fc3fed6)
+
+![image](https://github.com/user-attachments/assets/00b17eab-659c-449e-ab87-307418f633b6)
+
+
 
 
 
 # High-Level Overview:
-1.Teaches key DeFi concepts: lending, borrowing, collateral, liquidation.
+Teaches key DeFi concepts: lending, borrowing, collateral, liquidation.
 
 
-2.Introduces risk management: overcollateralization and liquidation.
+Introduces risk management: overcollateralization and liquidation.
 
 
-3.Directly related to DeFi protocols like Aave and Compound.
+Directly related to DeFi protocols like Aave and Compound.
 
-# OUTPUT:
-### Deploy:
-Screenshot 2025-04-28 140112.png>
-### Deposit:
-Screenshot 2025-04-28 142127.png>
-### Borrow:
-(<Screenshot 2025-04-28 142148.png>)
-### Collateral:
-Screenshot 2025-04-28 142217.png
 # RESULT : 
-Thus, a DeFi Lending and Borrowing Protocol has been successfully built and implenmented on Remix - Ethereum IDE
+
+Thus, to build a decentralized lending protocol where users can deposit assets to earn interest and borrow assets by providing collateral. This experiment introduces concepts like overcollateralization, liquidity pools, and interest accrual in DeFi is executed successfully.
